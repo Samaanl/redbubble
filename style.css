@@ -218,12 +218,13 @@ footer p {
   animation: pulse 2s infinite;
 }
 
-/* Mobile */
+/* Mobile optimization */
 @media (max-width: 900px) {
   .hero {
     flex-direction: column-reverse;
     text-align: center;
-    padding-top: 1rem;
+    padding: 2rem 5%;
+    gap: 1.5rem;
   }
   
   .hero-content {
@@ -235,5 +236,47 @@ footer p {
   .main-art {
     width: 100%;
     transform: none;
+    max-width: 350px;
+  }
+
+  .hero h1 {
+    font-size: clamp(3rem, 12vw, 4.5rem);
+    margin-bottom: 1rem;
+  }
+
+  .subtitle {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .btn-mega {
+    font-size: 1.1rem;
+    padding: 1rem 1.5rem;
+  }
+
+  .gallery {
+    gap: 1rem;
+  }
+
+  .gallery-item {
+    width: 45%; /* Show 2 items per row on mobile */
+    min-width: 140px;
+  }
+
+  .sub-heading {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .gallery-item {
+    width: 100%; /* Stack them vertically on very small screens */
+  }
+  .top-bar {
+    padding: 1rem;
+  }
+  .logo {
+    font-size: 1.6rem;
   }
 }
