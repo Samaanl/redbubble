@@ -1,0 +1,1 @@
+const sharp = require('sharp'); sharp('public/images/caseoh.png').resize({ width: 800 }).webp({ quality: 80 }).toFile('public/images/caseoh-optimized.webp').then(() => console.log('Done')).catch(console.error);
