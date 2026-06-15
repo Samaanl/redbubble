@@ -239,3 +239,126 @@ footer p {
     font-size: 1.8rem;
   }
 }
+
+/* --- Drooling Cat & Promo Banner Custom Styles --- */
+
+.promo-banner {
+  width: 100%;
+  background: linear-gradient(90deg, #ff2a2a, #ff7a00, #ff2a2a);
+  background-size: 200% auto;
+  color: #fff;
+  text-align: center;
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  animation: bannerGradient 5s linear infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  z-index: 100;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.promo-banner:hover {
+  filter: brightness(1.1);
+}
+
+@keyframes bannerGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.design-card.featured-card {
+  border: 2px solid var(--accent);
+  box-shadow: 0 0 30px rgba(57, 255, 20, 0.25);
+  position: relative;
+  transform: scale(1.02);
+}
+
+.design-card.featured-card::before {
+  content: '';
+  position: absolute;
+  top: -2px; left: -2px; right: -2px; bottom: -2px;
+  background: linear-gradient(45deg, var(--accent), #ffffff, var(--accent));
+  border-radius: 20px;
+  z-index: -1;
+  opacity: 0.3;
+  filter: blur(12px);
+  animation: borderGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes borderGlow {
+  0% { opacity: 0.25; filter: blur(6px); }
+  100% { opacity: 0.6; filter: blur(15px); }
+}
+
+.badge-featured {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: var(--accent-secondary);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 900;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  z-index: 10;
+  box-shadow: 0 5px 15px rgba(255, 42, 42, 0.5);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.product-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+.tag {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  padding: 0.35rem 0.7rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  transition: all 0.2s ease;
+}
+
+.tag:hover {
+  background: rgba(57, 255, 20, 0.1);
+  border-color: var(--accent);
+  color: #fff;
+  transform: translateY(-2px) scale(1.05);
+}
+
+.highlight-pulse {
+  animation: highlightPulse 1.8s ease-in-out 3;
+}
+
+@keyframes highlightPulse {
+  0% {
+    box-shadow: 0 0 30px rgba(57, 255, 20, 0.25);
+    transform: scale(1.02);
+  }
+  50% {
+    box-shadow: 0 0 60px rgba(57, 255, 20, 0.8);
+    transform: scale(1.05);
+    border-color: #fff;
+  }
+  100% {
+    box-shadow: 0 0 30px rgba(57, 255, 20, 0.25);
+    transform: scale(1.02);
+  }
+}

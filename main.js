@@ -47,4 +47,35 @@ document.addEventListener("DOMContentLoaded", () => {
             images[currentIndex].classList.add('active');
         }, 3000); // Change image every 3 seconds
     });
+
+    // Drooling Cat Focus & Scroll Logic
+    const promoBanner = document.getElementById('droolingCatBanner');
+    const targetCard = document.getElementById('drooling-cat');
+
+    function triggerHighlightPulse(element) {
+        element.classList.remove('highlight-pulse');
+        // Force reflow to restart CSS animation
+        void element.offsetWidth;
+        element.classList.add('highlight-pulse');
+    }
+
+    if (promoBanner && targetCard) {
+        promoBanner.addEventListener('click', () => {
+            targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            triggerHighlightPulse(targetCard);
+        });
+    }
+
+    // Scroll if hash is present
+    if (window.location.hash === '#drooling-cat' && targetCard) {
+        setTimeout(() => {
+            targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            triggerHighlightPulse(targetCard);
+        }, 500);
+    } else if (targetCard) {
+        // Otherwise, gently pulse the card on load to draw focus
+        setTimeout(() => {
+            triggerHighlightPulse(targetCard);
+        }, 1200);
+    }
 });
