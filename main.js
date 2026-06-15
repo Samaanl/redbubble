@@ -1,4 +1,5 @@
 import './style.css'
+import products from './public/images/drooling-cat-products.json'
 
 // Add basic scroll reveal effects
 document.addEventListener("DOMContentLoaded", () => {
@@ -77,5 +78,47 @@ document.addEventListener("DOMContentLoaded", () => {
         setTimeout(() => {
             triggerHighlightPulse(targetCard);
         }, 1200);
+    }
+
+    // Render Products Grid
+    const productsGrid = document.getElementById('productsGrid');
+    if (productsGrid) {
+        products.forEach((product, index) => {
+            const card = document.createElement('div');
+            card.className = 'product-item-card';
+            
+            // Set up transition delay for scroll reveal
+            card.style.opacity = "0";
+            card.style.transform = "translateY(30px)";
+            card.style.transition = `all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1) ${index * 0.04}s`;
+            
+            // Convert title to a kebab-case event string for GoatCounter
+            const eventName = product.title.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+
+            card.innerHTML = `
+                <div class="product-item-image-wrapper">
+                    <img src="${product.image}" alt="${product.title}" class="product-item-image" loading="lazy" />
+                </div>
+                <div class="product-item-info">
+                    <h4 class="product-item-title">${product.title}</h4>
+                    <div class="product-item-price">${product.price}</div>
+                    <a href="${product.link}" 
+                       target="_blank" 
+                       rel="noopener noreferrer" 
+                       class="product-item-btn"
+                       data-goatcounter-click="drooling-cat-product-${eventName}"
+                       data-goatcounter-title="Drooling Cat ${product.title} Click">
+                       <i data-lucide="shopping-cart"></i> Buy Product
+                    </a>
+                </div>
+            `;
+            productsGrid.appendChild(card);
+            observer.observe(card);
+        });
+        
+        // Re-run lucide icons to parse new cards
+        if (window.lucide) {
+            window.lucide.createIcons();
+        }
     }
 });
