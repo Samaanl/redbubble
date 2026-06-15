@@ -135,6 +135,7 @@ a { text-decoration: none; }
   aspect-ratio: 1;
   background: #fff; /* Redbubble mockup background */
   overflow: hidden;
+  z-index: 2;
 }
 
 .rotator-img {
@@ -159,6 +160,9 @@ a { text-decoration: none; }
   flex: 1;
   align-items: center;
   text-align: center;
+  background: #111118;
+  position: relative;
+  z-index: 2;
 }
 
 .card-info h3 {
